@@ -33,13 +33,6 @@
     .stage{width:100%;height:100%;background:#000;min-height:80vh;display:flex;align-items:center;justify-content:center}
     .stage video{width:100%;height:100%;object-fit:contain}
     .status{color:#0f0;font-size:12px;border-top:1px solid #333;padding:6px}
-
-    /* ===== 管理パネル ===== */
-    #adminBar{position:fixed;inset:auto 8px 8px 8px;display:none;z-index:1000;background:#0b0b0b;border:1px solid #333;border-radius:12px;padding:10px;box-shadow:0 10px 30px rgba(0,0,0,.6)}
-    #adminBar.active{display:block}
-    #adminBar h3{margin:0 0 8px;font-size:14px}
-    #adminBar button{border:1px solid #555;background:#1d1d1d;color:#fff;border-radius:8px;padding:8px;font-size:12px;cursor:pointer}
-    #adminBar button:hover{background:#2a2a2a}
   </style>
 </head>
 <body class="gate-active">
@@ -78,7 +71,14 @@
   <main class="wrap">
     <section class="panel screen">
       <div class="stage" id="stage">
-        <video id="player" src="videos/demo.mp4" controls playsinline webkit-playsinline></video>
+        <video 
+          id="player" 
+          src="https://drive.google.com/uc?export=download&id=1jy5tZeSYAmptpgg57RR4XfZ-IY-zm7yQ"
+          controls
+          playsinline
+          webkit-playsinline
+          preload="metadata"
+        ></video>
       </div>
     </section>
   </main>
@@ -92,10 +92,19 @@
     const btnRuleNext = document.getElementById('btn-rule-next');
     const btnAccept = document.getElementById('btn-accept');
 
-    btnConfirm.addEventListener('click', ()=>{ step1.style.display='none'; step2.style.display='block'; });
-    btnRuleNext.addEventListener('click', ()=>{ step2.style.display='none'; step3.style.display='block'; });
-    btnAccept.addEventListener('click', ()=>{ document.body.classList.remove('gate-active'); gate.style.display='none'; });
+    btnConfirm.addEventListener('click', ()=>{
+      step1.style.display='none'; 
+      step2.style.display='block';
+    });
+    btnRuleNext.addEventListener('click', ()=>{
+      step2.style.display='none'; 
+      step3.style.display='block';
+    });
+    btnAccept.addEventListener('click', ()=>{
+      document.body.classList.remove('gate-active'); 
+      gate.style.display='none'; 
+      document.body.classList.add('played'); // 動画画面表示
+    });
   </script>
 </body>
 </html>
-
